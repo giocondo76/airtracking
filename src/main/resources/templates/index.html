@@ -13,9 +13,11 @@
         <h2> Please select location: </h2>
     </div>
     <div class="list-locaions">
+
             <tr th:each="location : ${locations}">
                 <p>
-                    <a th:href="@{'/condition'}">
+                    <a th:href="@{/condition/{id}(id=${location.id})}">
+                        <!--<a th:href="@{'/users/doDelete/'${user.id}}"><span>Delete</span></a>-->
                         <td th:text="${location.id}"></td>
                         <td th:text="${location.name}"></td>
                     </a>
