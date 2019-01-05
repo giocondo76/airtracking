@@ -23,6 +23,15 @@
 
             </tr>
     </div>
+    <div class="add-new-location">
+        <form th:action="@{/index}" th:object="${location}" method="POST">
+            <p>Id: <input type="text" th:field="${location.id}" /></p>
+            <p>Name: <input type="text" th:field="${location.name}" /></p>
+            <p>Type: <input type="text" th:field="${location.locType}" /></p>
+            <p>Standart: <input type="text" th:field="${location.standart}" /></p>
+            <p> <button type="submit">Add location</button></p>
+        </form>
+    </div>
 </div>
 <script type="text/javascript"
         src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>

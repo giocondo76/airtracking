@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LocTypeRepository extends JpaRepository< Location, Integer> {
+public interface LocTypeRepository extends JpaRepository< LocType, Integer> {
 
     LocType getById(Integer id);
 }
