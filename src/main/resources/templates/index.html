@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Airtrack Application</title>
 </head>
 <body>
@@ -17,9 +17,8 @@
 <form th:action="@{/index}" method="post">
     <div><label> User Id : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="checkbox" value="remember-me">Remember me</div>
-    <div><input type="submit" value="Sign In"/>Sign In</div>
-    <a th:href="@{/registration}">Register</a>
+    <div><input type="submit" value="Sign In"/></div>
+    <a th:href="@{/registration}">Registration</a>
 </form>
 </body>
 </html>
