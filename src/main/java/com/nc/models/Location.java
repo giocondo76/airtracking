@@ -17,7 +17,6 @@ public class Location {
     @Column(name = "name")
     private String name;
 
-
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "location")
     private List<Device> devices;
