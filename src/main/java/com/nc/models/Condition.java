@@ -9,7 +9,7 @@ import java.util.Set;
 public class Condition {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "cond_id")
     private Integer id;
 

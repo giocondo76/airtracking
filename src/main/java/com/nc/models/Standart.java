@@ -11,7 +11,7 @@ import java.util.List;
 public class Standart {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name ="st_id")
     private Integer id;
 

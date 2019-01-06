@@ -1,12 +1,13 @@
 package com.nc.models;
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
 @Table(name = "usr")
 public class User {
         @Id
-        @GeneratedValue(strategy=GenerationType.IDENTITY)
+        @GeneratedValue(strategy=GenerationType.AUTO)
         private Integer id;
 
         @Column(name="name", nullable=false)
@@ -41,7 +42,10 @@ public class User {
             this.location = location;
         }
 
-        public Integer getId() {
+    public <T> User(String username, String password, List<T> ts) {
+    }
+
+    public Integer getId() {
                     return id;
                 }
 
@@ -91,13 +95,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role=" + role +
-                ", location=" + location +
-                '}';
+        return null;
     }
 }

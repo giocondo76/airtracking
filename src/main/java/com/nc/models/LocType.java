@@ -8,7 +8,7 @@ import java.util.List;
 public class LocType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "lt_id")
     private Integer id;
 

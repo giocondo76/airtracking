@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled=true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -25,22 +27,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder encoder() {
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder(14);
     }
 
-    @Bean
-    public AuthenticationManager customAuthenticationManager() throws Exception {
-        return authenticationManager();
-    }
-
-    @Bean
-    public DaoAuthenticationProvider authProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(encoder());
-        return authProvider;
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -51,46 +41,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/adminnav").access("hasRole('ADMIN')")
                     .antMatchers("/usernav").access("hasRole('USER')")
                 .and()
-                    .userDetailsService(userDetailsService)
-                    .authenticationProvider(authProvider())
                     .formLogin()
                     .loginPage("/index")
                     .loginProcessingUrl("/index")
-                    .defaultSuccessUrl("/location",true)
+                    .defaultSuccessUrl("/location")
                 .and()
                     .logout()
                     .permitAll()
                     .logoutSuccessUrl("/login?logout");
 
     }
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeRequests()
-//                    .antMatchers("/", "/registration").permitAll()
-//                    .anyRequest().authenticated()
-//                .and()
-//                    .formLogin()
-//                    .loginPage("/index")
-//                    .failureUrl("/index.html?error=true")
-//                    .loginProcessingUrl("/index")
-//                .and()
-//                    .logout().deleteCookies("JSESSIONID")
-//                .and()
-//
-//        ;
-//    }
 
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("password")
-//                        .roles("USER")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(bCryptPasswordEncoder());
+
+    }
+
 }

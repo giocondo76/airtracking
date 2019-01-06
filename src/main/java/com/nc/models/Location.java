@@ -10,7 +10,7 @@ import java.util.Set;
 public class Location {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "loc_id")
     private Integer id;
 
