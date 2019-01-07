@@ -1,5 +1,7 @@
 package com.nc.service;
 
+import com.nc.controllers.Valid.UserDto;
+import com.nc.controllers.response.EmailExistsException;
 import com.nc.models.User;
 import com.nc.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,7 @@ import java.util.List;
 @Service
 public interface UserService {
 
+        User registerNewUserAccount(UserDto accountDto)
+                throws EmailExistsException;
 
-    int addUser(User user);
-
-    List<User> getAll();
-
-    User findById(Integer id);
-
-    User findByEmail(String email);
 }

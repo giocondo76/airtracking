@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name = "usr")
 public class User {
         @Id
-        @GeneratedValue(strategy=GenerationType.AUTO)
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
         private Integer id;
 
         @Column(name="name", nullable=false)
@@ -77,15 +77,16 @@ public class User {
             this.password = password;
         }
 
+
         public Role getRole() {
             return role;
         }
 
         public void setRole(Role role) {
             this.role = role;
-        }
+    }
 
-        public Location getLocation() {
+    public Location getLocation() {
             return location;
         }
 

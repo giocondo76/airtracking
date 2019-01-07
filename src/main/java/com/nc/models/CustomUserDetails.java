@@ -14,6 +14,7 @@ public class CustomUserDetails implements UserDetails {
     Set<GrantedAuthority> authorities=null;
 
     public CustomUserDetails(String name, String password, List<GrantedAuthority> grantedAuthorities) {
+
     }
 
     public User getUser() {
