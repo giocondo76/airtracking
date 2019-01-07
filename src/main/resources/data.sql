@@ -4,18 +4,6 @@ INSERT INTO public.dev_type(
 		(2, 'humidity'),
 		(3, 'co2');
 
-INSERT INTO public.device(
-	dev_id, name, type, location)
-	VALUES (1, 'device 1', 1, 1),
- 		(2, 'device 2', 2, 1),
-		(3, 'device 3', 3, 1)
-		(4, 'device 4', 1, 2),
- 		(5, 'device 5', 2, 2),
-		(6, 'device 6', 3, 2)
-		(7, 'device 7', 1, 3),
- 		(8, 'device 8', 2, 3),
-		(9, 'device 9', 3, 3);
-
 
 INSERT INTO public.loc_type(
 	lt_id, name)
@@ -23,16 +11,32 @@ INSERT INTO public.loc_type(
 		(2, 'people are engaged in mental work, study'),
 		(3, 'rooms with temporary stay of people - lobbies, walk-in closets, corridors, stairwells, bathrooms, smoking rooms, etc.');
 
+
 INSERT INTO public.standart(
 	st_id, name, temp_min, temp_max, hum_max, carb_diox_min, carb_diox_max)
 	VALUES (1, 'warm', 18, 28, 65, 600, 1000),
 	(2, 'cold', 18, 24, 60, 800, 1000);
+
 
 INSERT INTO public.location(
 	loc_id, name, type, standart)
 	VALUES (1, 'secret room', 3, 2),
 		(2, 'dinner room', 1, 2),
 		(3, 'work space', 2, 2);
+
+
+INSERT INTO public.device(
+	dev_id, name, type, location)
+	VALUES (1, 'device 1', 1, 1),
+ 		(2, 'device 2', 2, 1),
+		(3, 'device 3', 3, 1),
+		(4, 'device 4', 1, 2),
+ 		(5, 'device 5', 2, 2),
+		(6, 'device 6', 3, 2),
+		(7, 'device 7', 1, 3),
+ 		(8, 'device 8', 2, 3),
+		(9, 'device 9', 3, 3);
+
 
 INSERT INTO public.condition(
 	cond_id, datetime, location, temp, hum, carb_diox)
