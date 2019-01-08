@@ -7,6 +7,7 @@ import com.nc.models.User;
 import com.nc.repository.RoleRepository;
 import com.nc.repository.UserRepository;
 import com.nc.service.UserService;
+import com.sun.org.apache.xml.internal.res.XMLErrorResources_tr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,7 @@ public class UserServiceImpl implements UserService {
         user.setRole(userRole);
         return userRepository.save(user);
     }
+
 
         private boolean emailExist(String email) {
         User user = userRepository.findByEmail(email);

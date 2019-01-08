@@ -31,12 +31,6 @@ public class RegistrationController {
     @Autowired
     private UserServiceImpl service;
 
-//    @GetMapping("/registration")
-//    public String registration() {
-//        return "registration";
-//    }
-
-
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showRegistrationForm(WebRequest request, Model model) {
         UserDto userDto = new UserDto();
@@ -75,26 +69,7 @@ public class RegistrationController {
         }
         return registered;
     }
-//    @PostMapping("/registration")
-//    public String registration(Map<String, Object> model) {
-//
-//        User user = new User();
-//        user.setName(user.getName());
-//        user.setName(user.getName());
-//        user.setPassword(user.getPassword());
-//        user.setRole(roleRepository.findOne(2));
-//
-//        User userFromDb = userRepository.findByName(user.getName());
-//
-//        if (userFromDb != null) {
-//            model.put("message", "User exists!");
-//            return "registration";
-//        }
-//
-//        userRepository.save(user);
-//
-//        return "redirect:/index";
-//    }
+
 
 
 }
