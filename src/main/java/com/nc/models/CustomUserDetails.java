@@ -11,10 +11,11 @@ public class CustomUserDetails implements UserDetails {
 
     private User user;
 
-    Set<GrantedAuthority> authorities=null;
+    Set<GrantedAuthority> authorities;
 
-    public CustomUserDetails(String name, String password, List<GrantedAuthority> grantedAuthorities) {
-
+    public CustomUserDetails(User user, Set<GrantedAuthority> authorities) {
+        this.user = user;
+        this.authorities = authorities;
     }
 
     public User getUser() {

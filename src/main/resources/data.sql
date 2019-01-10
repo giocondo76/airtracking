@@ -65,7 +65,7 @@ INSERT INTO public.role(
 
 INSERT INTO public.usr(
 	id, name, email, location, password, role)
-	VALUES (1,'a', 'a@a.ru', 1, 12345, 1);
+	VALUES (1,'a', 'a@a.ru', 1, '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', 1);
 
 
 

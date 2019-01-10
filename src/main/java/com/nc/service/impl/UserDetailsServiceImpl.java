@@ -16,10 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -29,14 +26,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     @Transactional(readOnly = true)
-    public CustomUserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
+    public CustomUserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        User user = userRepository.findByName(name);
         if (user == null) {
-            throw new UsernameNotFoundException(email);
+            throw new UsernameNotFoundException(name);
         }
         GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getName());
-        CustomUserDetails customUserDetails = new CustomUserDetails(user.getName(),
-                user.getPassword(), Arrays.asList(authority));
+        CustomUserDetails customUserDetails = new CustomUserDetails(user, Collections.singleton(authority));
 
         return customUserDetails;
     }
