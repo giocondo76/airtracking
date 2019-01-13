@@ -6,9 +6,7 @@ import com.nc.repository.ConditionRepository;
 import com.nc.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -25,23 +23,14 @@ public class ConditionController {
 //    private ChangeRepository changeRepository;
 
 
-    @GetMapping(value ="/condition")
-    public String condition( Map<String, Object> model){
 
-        List<Condition> conditions = conditionRepository.findAll();
+    @RequestMapping(value ="/condition/{id}", method = RequestMethod.GET)
+    public String condition( Map<String, Object> model, @PathVariable Integer id){
+
+        List<Condition> conditions = conditionRepository.findByLocationId(id);
         model.put("conditions", conditions);
         return "condition";
     }
-
-
-
-//    @GetMapping("/condition{id}")
-//    public String condition(@RequestParam Map<String, Object> model){
-//
-//        List<Condition> conditions = conditionRepository.findByLocationId(id);
-//        model.put("conditions", conditions);
-//        return "condition";
-//    }
 
 //
 //    @PostMapping("/condition")

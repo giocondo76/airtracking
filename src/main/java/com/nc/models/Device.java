@@ -15,13 +15,11 @@ public class Device {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne (fetch=FetchType.LAZY,
-            cascade=CascadeType.ALL)
+    @ManyToOne (fetch=FetchType.LAZY)
     @JoinColumn (name="type")
     private DevType devType;
 
-    @ManyToOne (fetch=FetchType.LAZY,
-            cascade=CascadeType.ALL)
+    @ManyToOne (fetch=FetchType.LAZY)
     @JoinColumn (name="location")
     private Location location;
 

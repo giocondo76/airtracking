@@ -37,17 +37,17 @@ public class MainController {
 
     }
 
-    @PostMapping
-    public String add(@RequestParam Integer id, @RequestParam String name, @RequestParam LocType locType,
-                      @RequestParam Standart standart, Map<String, Object> model) {
-        Location location = new Location(id, name, locType, standart);
-
-        locationRepository.save(location);
-
-        Iterable<Location> locations = locationRepository.findAll();
-
-        model.put("locations", locations);
-
-        return "index";
-    }
+//    @RequestMapping(value ="/index", method = RequestMethod.POST)
+//    public String add(@RequestParam Integer id, @RequestParam String name, @RequestParam LocType locType,
+//                      @RequestParam Standart standart, Map<String, Object> model) {
+//        Location location = new Location(id, name, locType, standart);
+//
+//        locationRepository.save(location);
+//
+//        Iterable<Location> locations = locationRepository.findAll();
+//
+//        model.put("locations", locations);
+//
+//        return "index";
+//    }
 }

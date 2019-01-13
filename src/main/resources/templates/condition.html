@@ -31,11 +31,10 @@
             <th>Hum</th>
             <th>CO2</th>
         </tr>
-        <tr th:each="condition : ${conditions}">
-                    <td th:utext="${condition.temp}"></td>
-                    <td th:utext="${condition.hum}"></td>
-                    <td th:utext="${condition.co2}"></td>
-
+        <tr th:each="condition : *{conditions}">
+                    <td th:text="*{condition.temp}"></td>
+                    <td th:text="*{condition.hum}"></td>
+                    <td th:text="*{condition.co2}"></td>
         </tr>
         </table>
     </div>

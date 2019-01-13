@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 @ComponentScan("com.nc")
-@SpringBootApplication(scanBasePackages={"com.nc.controllers","com.nc.models","com.nc.repository","com.nc.service"})
+@SpringBootApplication
 public class SpringBootWebApplication {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(SpringBootWebApplication.class, args);

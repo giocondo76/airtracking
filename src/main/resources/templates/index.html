@@ -13,36 +13,38 @@
         <h2> Please select location: </h2>
     </div>
     <div class="list-locaions">
-            <tr th:each="location : ${locations}">
-                <p>
-                    <a th:href="@{'/condition'}">
-                        <td th:text="${location.id}"></td>
-                        <td th:text="${location.name}"></td>
-                    </a>
-                </p>
 
-            </tr>
-    </div>
-    <div class="add-new-location">
-        <form th:action="@{/index}" th:object="${newLocation}" method="POST">
-            <p>Id: <input type="text" th:value="${location.id}" /></p>
-            <p>Name: <input type="text" th:value="${location.name}" /></p>
-            <p>Type:
-                <select th:field="*{locType}" class="form-control">
-                    <option th:each="type: ${LocTypes}" th:value="${locType.id}" th:text="${locType.name}"></option>
-                </select>
+        <tr th:each="location : ${locations}">
+            <p>
+                <a th:href="@{/condition/{id}(id=${location.id})}">
+                    <!--<a th:href="@{'/users/doDelete/'${user.id}}"><span>Delete</span></a>-->
+                    <td th:text="${location.id}"></td>
+                    <td th:text="${location.name}"></td>
+                </a>
             </p>
-            <p>Standart:
-                <select th:field="*{standart}" class="form-contro2">
-                    <option th:each="standart: ${standarts}" th:value="${standart.id}" th:text="${standart.name}"></option>
-                </select>
-            </p>
-            <p> <button type="submit">Add location</button></p>
-        </form>
+
+        </tr>
     </div>
+    <!--<div class="add-new-location">-->
+        <!--<form th:action="@{/index}" th:object="${newLocation}" method="POST">-->
+            <!--<p>Id: <input type="text" th:value="${location.id}" /></p>-->
+            <!--<p>Name: <input type="text" th:value="${location.name}" /></p>-->
+            <!--<p>Type:-->
+                <!--<select th:field="*{locType}" class="form-control">-->
+                    <!--<option th:each="type: ${LocTypes}" th:value="${locType.id}" th:text="${locType.name}"></option>-->
+                <!--</select>-->
+            <!--</p>-->
+            <!--<p>Standart:-->
+                <!--<select th:field="*{standart}" class="form-contro2">-->
+                    <!--<option th:each="standart: ${standarts}" th:value="${standart.id}" th:text="${standart.name}"></option>-->
+                <!--</select>-->
+            <!--</p>-->
+            <!--<p> <button type="submit">Add location</button></p>-->
+        <!--</form>-->
+    <!--</div>-->
 </div>
-<script type="text/javascript"
-        src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script type="text/javascript"-->
+        <!--src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
 </body>
 </html>
